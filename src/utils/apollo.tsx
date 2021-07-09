@@ -10,8 +10,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 function createIsomorphLink() {
   return new HttpLink({
-    // uri: 'http://localhost:4000/graphql', // Server URL (must be absolute)
-    uri: 'http://localhost:4000/graphql', // Server URL (must be absolute)
+    uri: 'https://cryptic-inlet-95343.herokuapp.com/graphql',
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
   });
 }
