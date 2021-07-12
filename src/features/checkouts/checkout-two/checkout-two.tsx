@@ -185,8 +185,8 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
           timer: 1500
         })
 
-        // clearCart();
-        // Router.push('/');
+        clearCart();
+        Router.push('/');
       }
       setLoading(false);
     };
