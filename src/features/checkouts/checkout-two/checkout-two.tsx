@@ -158,7 +158,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
             custumerName: custumerName[0].name,
             contact:Num[0].number,
             Products: tostring,
-            Status: "1 -Pendiente de pago",
+            Status: "1 - Pendiente de pago",
             Total_amount: ((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress),
             delivery_address: address[0].info,
             custumerId: state.id,
