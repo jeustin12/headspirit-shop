@@ -42,21 +42,18 @@ export const Products: React.FC<ProductsProps> = ({
   loadMore = true,
   type,
 }) => {
-  const statecategory = useAppState('categoryname')
-  const [category,setcategory]=useState(statecategory)
+  const statesubcategory = useAppState('subcategoryname')
   const router = useRouter();
   const { data, error, loading, fetchMore, networkStatus } = useQuery(GET_PRODUCTS,
     {
       variables:{
-        category:statecategory
+        subcategory:statesubcategory 
       },
-      // pollInterval:3000
     }
     )
-  // if () {
-    console.log(statecategory);
-    
-  // }
+  console.log(statesubcategory);
+  
+  
   const loadingMore = networkStatus === NetworkStatus.fetchMore;
   
   if (error) return <ErrorMessage message={error.message} />;

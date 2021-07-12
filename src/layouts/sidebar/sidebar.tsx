@@ -43,10 +43,9 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
   const dispatch = useAppDispatch();
   const { pathname, query } = router;
   const selectedQueries = query.categor;
-  const statecategory = useAppState('categoryname')
-  const onCategoryClick = (title: string) => {
-    let nothing= 'imagen'
-    dispatch({type:'PASSID',payload:title})
+  const onSubCategoryClick = (title: string) => {
+    dispatch({type:'PASSNAME',payload:title})
+    console.log('subcategoria');
   };
   const isSidebarSticky = useAppState('isSidebarSticky');
 
@@ -70,11 +69,11 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
               </RequestMedicine>
             </Link>
           )}
-          <TreeMenu
+          {/* <TreeMenu
             data={data.getAllCategories}
             onClick={onCategoryClick}
             active={selectedQueries}
-          />
+          /> */}
         </CategoryWalker>
       </PopoverWrapper>
 
@@ -95,7 +94,7 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
             <TreeWrapper>
               <TreeMenu
                 data={data.getAllCategories}
-                onClick={onCategoryClick}
+                onClick={onSubCategoryClick}
                 active={selectedQueries}
               />
             </TreeWrapper>

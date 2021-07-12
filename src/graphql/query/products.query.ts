@@ -18,8 +18,8 @@ import { gql } from '@apollo/client';
 // `;
 
 export const GET_PRODUCTS = gql`
-query getProducts($isActive: String!="active",$category: String) {
-  product(isActive:$isActive,category:$category) {
+query getProducts($isActive: String!="active",$subcategory: String) {
+  product(isActive:$isActive,subcategory:$subcategory) {
     id
     name
     slug
@@ -31,6 +31,9 @@ query getProducts($isActive: String!="active",$category: String) {
     type
     image
     quantity
+    category
+    subcategory
+
 }
 }
 `;

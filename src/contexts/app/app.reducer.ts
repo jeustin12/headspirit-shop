@@ -4,12 +4,14 @@ export const initialState = {
   isSidebarSticky: true,
   isDrawerOpen: false,
   isModalOpen: false,
-  categoryname: ''
+  categoryname: '',
+  subcategoryname:''
 };
 
 type ActionType =
   | { type: 'SET_SEARCH_TERM'; payload: string }
   | { type: 'PASSID'; payload:string }
+  | { type: 'PASSNAME'; payload:string }
   | { type: 'SET_STICKY' }
   | { type: 'REMOVE_STICKY' }
   | { type: 'SET_SIDEBAR_STICKY' }
@@ -32,6 +34,12 @@ export function appReducer(state: StateType, action: ActionType): StateType {
           categoryname: action.payload 
           ,
         }
+        case 'PASSNAME':
+          return{
+            ...state,
+            subcategoryname: action.payload 
+            ,
+          }
     case 'SET_STICKY':
       return {
         ...state,
