@@ -49,16 +49,18 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     return state.items?.find((item) => item.id === id);
   };
   const getCartItemsPrice = () => cartItemsTotalPrice(state.items).toFixed(2);
-  const getCartItemsTotalPrice = () =>
-    cartItemsTotalPrice(state.items, state.coupon).toFixed(2);
+  const getCartItemsTotalPrice = () =>{
+    let product = cartItemsTotalPrice(state.items, state.coupon);
+    let totalPrice = product + Number(2500)
+    return totalPrice
+  }
 
   const getDiscount = () => {
     const total = cartItemsTotalPrice(state.items);
-    // const discount = state.coupon
-    //   ? (total * Number(state.coupon?.discountInPercent)) / 100
-    //   : 0;
-    const totalprice = total + Number(2500)
-    return totalprice.toFixed(2);
+    const discount = state.coupon
+      ? (total * Number(state.coupon?.discountInPercent)) / 100
+      : 0;
+    return discount.toFixed(2);
   };
 
   const getExpressPrice = () => {

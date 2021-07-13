@@ -111,25 +111,7 @@ const QuickViewMobile: React.FunctionComponent<QuickViewProps> = ({
               </ProductTitlePriceWrapper>
 
               <ProductWeight>{unit}</ProductWeight>
-              <ProductDescription>
-                <ReadMore character={600}>{description}</ReadMore>
-              </ProductDescription>
-
-              <ProductMeta>
-                <MetaSingle>
-                  {categories
-                    ? categories.map((item: any) => (
-                        <MetaItem
-                          onClick={() => onCategoryClick(item.slug)}
-                          key={item.id}
-                        >
-                          {item.title}
-                        </MetaItem>
-                      ))
-                    : ''}
-                </MetaSingle>
-              </ProductMeta>
-
+              
               <ProductCartWrapper>
                 <ProductPriceWrapper>
                   <ProductPrice>
@@ -170,6 +152,25 @@ const QuickViewMobile: React.FunctionComponent<QuickViewProps> = ({
                   )}
                 </ProductCartBtn>
               </ProductCartWrapper>
+              <ProductDescription>
+                <ReadMore character={600}>{description}</ReadMore>
+              </ProductDescription>
+
+              <ProductMeta>
+                <MetaSingle>
+                  {categories
+                    ? categories.map((item: any) => (
+                        <MetaItem
+                          onClick={() => onCategoryClick(item.slug)}
+                          key={item.id}
+                        >
+                          {item.title}
+                        </MetaItem>
+                      ))
+                    : ''}
+                </MetaSingle>
+              </ProductMeta>
+
             </ProductInfo>
           </ProductInfoWrapper>
 
