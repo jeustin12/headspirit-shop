@@ -9,6 +9,6 @@ export default [
     id: '2',
     type: 'secondary',
     title: 'Envio Express',
-    time_slot: 'Se envia el dia siguiente(costo adicional de 2000 colones)',
+    time_slot: 'Se envia el dia siguiente(costo adicional de 4500 colones)',
   },
 ];

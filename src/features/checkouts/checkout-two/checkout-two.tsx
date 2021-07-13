@@ -136,6 +136,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
     const handleSubmit = async () => {
       setLoading(true);
       if (isValid) {
+        try {
         
         let Num = state.contact.filter(ele=>ele.type==='primary')
         let product= items.map((item) => (
@@ -163,37 +164,47 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
             custumerId: state.id,
             schedule:schedule[0].title
           }
-          addOrder({
-              variables:{
-                  input: order
-                }
-              })
-          for (let i = 0; i < ProductID.length; i++) {
-              updateProductQuantity({
-              variables:{
-              id:ProductID[i],
-              quantity:ProductQuantity[i]
+            
+            addOrder({
+                variables:{
+                    input: order
                   }
                 })
-                }
-        let to_number =  Number(((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress))
-        neworexistCustumer({
-          variables:{
-            id: state.id,
-            number:custumerName[0].name,
-            order: to_number
+            for (let i = 0; i < ProductID.length; i++) {
+                updateProductQuantity({
+                variables:{
+                id:ProductID[i],
+                quantity:ProductQuantity[i]
+                    }
+                  })
+                  }
+          let to_number =  Number(((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress))
+          neworexistCustumer({
+            variables:{
+              id: state.id,
+              number:custumerName[0].name,
+              order: to_number
+            }
+          })
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Tu orden a sido confirmada',
+            showConfirmButton: false,
+            timer: 1500
+          })
+  
+          clearCart();
+          Router.push('/');
+          } catch (error) {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: "Por favor asegurese de introducir o seleccionar ya sea la direccion o el número de telefono",
+              showConfirmButton: false,
+              // timer: 1500
+            })
           }
-        })
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Tu orden a sido confirmada',
-          showConfirmButton: false,
-          timer: 1500
-        })
-
-        clearCart();
-        Router.push('/');
       }
       setLoading(false);
     };
@@ -390,7 +401,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                     {(entrega[0].title === 'Entega normal') ? 
                     <Text>{CURRENCY}2500</Text>:
 
-                    <Text>{CURRENCY}2000</Text>
+                    <Text>{CURRENCY}4500</Text>
                   }
                   </TextWrapper>
 
