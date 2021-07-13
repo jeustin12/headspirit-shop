@@ -45,6 +45,7 @@ export const SearchBox: React.FC<Props> = ({
             style={{ marginLeft: 16, marginRight: 16, color: '#212121' }}
           />
           <StyledInput
+          autoComplete='off'
             type='search'
             onChange={onChange}
             value={value}
@@ -56,6 +57,7 @@ export const SearchBox: React.FC<Props> = ({
         <>
           <StyledCategoryName>{categoryType}</StyledCategoryName>
           <StyledInput
+          autoComplete='off'
             type='search'
             onChange={onChange}
             value={value}

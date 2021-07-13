@@ -67,6 +67,7 @@ return (
         </Heading>
         <FieldWrapper>
             <MaskedInput
+            autoComplete='off'
             mask={['(','+','5', '0','6', ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
             className="form-control"
             placeholder="Ingrese un numero de telefono"

@@ -21,6 +21,7 @@ export default function SearchField({
     <SearchWrapper className={classes.trim()}>
       {icon && <Icon>{icon}</Icon>}
       <Input
+        autoComplete='off'
         name={name}
         className="search-input"
         type="search"
