@@ -46,6 +46,7 @@ const CategoryIconNav = (props: any) => {
 
   return (
     <>
+    1
       {/* {CATEGORY_MENU_ITEMS.map((item) => (
         <Col key={item.id}>
           <IconNavCard

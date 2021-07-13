@@ -20,6 +20,7 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
   const handleOnChange = (e) => {
     const { value } = e.target;
     dispatch({ type: 'SET_SEARCH_TERM', payload: value });
+    dispatch({type:'PASSNAME',payload:''})
   };
   const { pathname, query } = router;
   const onSearch = (e) => {
@@ -39,7 +40,7 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
         id: 'searchPlaceholder',
         defaultMessage: 'Search your products from here',
       })}
-      categoryType={query.type || 'bakery'}
+      
       buttonText={intl.formatMessage({
         id: 'searchButtonText',
         defaultMessage: 'Search',

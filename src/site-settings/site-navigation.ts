@@ -76,15 +76,15 @@ export const AUTHORIZED_MENU_ITEMS = [
   },
 ];
 // category menu items for header navigation
-// export const CATEGORY_MENU_ITEMS = [
-//   {
-//     id: 'nav.makeup',
-//     defaultMessage: 'Makeup',
-//     href: MAKEUP_PAGE,
-//     icon: 'FacialCare',
-//     dynamic: true,
-//   },
-// ];
+export const CATEGORY_MENU_ITEMS = [
+  {
+    id: 'nav.makeup',
+    defaultMessage: 'Makeup',
+    href: MAKEUP_PAGE,
+    icon: 'FacialCare',
+    dynamic: true,
+  },
+];
 
 export const MOBILE_DRAWER_MENU = [
   HOME_MENU_ITEM,
