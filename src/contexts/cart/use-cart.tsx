@@ -54,15 +54,16 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
 
   const getDiscount = () => {
     const total = cartItemsTotalPrice(state.items);
-    const discount = state.coupon
-      ? (total * Number(state.coupon?.discountInPercent)) / 100
-      : 0;
-    return discount.toFixed(2);
+    // const discount = state.coupon
+    //   ? (total * Number(state.coupon?.discountInPercent)) / 100
+    //   : 0;
+    const totalprice = total + Number(2500)
+    return totalprice.toFixed(2);
   };
 
   const getExpressPrice = () => {
     const total = cartItemsTotalPrice(state.items);
-    const discount = total + Number(2000)
+    const discount = total + Number(4500)
     return discount.toFixed(2);
   };
   const getItemsCount = state.items?.reduce(

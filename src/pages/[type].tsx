@@ -37,6 +37,7 @@ export const GET_CATEGORIES = gql`
       title
       slug
       icon
+      type
     children{
       id
       title
@@ -61,9 +62,10 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
       scroll();
     }
   }, [query.text, query.category]);
-  const PAGE_TYPE: any = 'makeup';
-  const page = sitePages["makeup"];
+  const PAGE_TYPE: any = 'tienda';
+  const page = sitePages[PAGE_TYPE];
   if(loading) return <h1>Cargando...</h1>
+  console.log(data);
   
   return (
     <>

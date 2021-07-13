@@ -77,7 +77,7 @@
   "profileNameField": "Nombre",
   "profileEmailField": "Email",
   "profileSaveBtn": "Salvar",
-  "contactNumberTItle": "Telefono de contacto",
+  "contactNumberTItle": "Número de telefono",
   "addContactBtn": "Agregar contacto",
   "deliveryAddresTitle": "Dirección de entrega",
   "addAddressBtn": "Añadir dirección",
@@ -97,7 +97,7 @@
 
   "deliverySchedule": "Calendario de entregas",
   "checkoutDeliveryAddress": "Dirección de entrega",
-  "contactNumberText": "Número de contacto",
+  "contactNumberText": "Número de Telefono",
   "selectPaymentText": "Opcion de pago",
   "proceesCheckout": "Pasar por la caja",
   "backHomeBtn": "De vuelta a casa",

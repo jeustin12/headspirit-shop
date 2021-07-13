@@ -1,6 +1,6 @@
-export const HOME_PAGE = '/';
+export const HOME_PAGE = '/tienda';
 export const GROCERY_PAGE = '/grocery';
-export const MAKEUP_PAGE = '/makeup';
+export const  TIENDA= '/tienda';
 
 // export const RESTAURANT_PAGE = '/restaurant';
 export const REQUEST_MEDICINE_PAGE = '/request-medicine';
@@ -79,8 +79,8 @@ export const AUTHORIZED_MENU_ITEMS = [
 export const CATEGORY_MENU_ITEMS = [
   {
     id: 'nav.makeup',
-    defaultMessage: 'Makeup',
-    href: MAKEUP_PAGE,
+    defaultMessage: 'Tienda',
+    href: TIENDA,
     icon: 'FacialCare',
     dynamic: true,
   },

@@ -29,7 +29,7 @@ number: Yup.string().required('Number is required'),
 const CreateContact: React.FC<Props> = ({ item }) => {
 const initialValues = {
     id: item.id || null,
-    type: item.type || 'primary',
+    type: 'primary',
     number: item.number || '',
 };
 const [addContactMutation] = useMutation(CREATE_CONTACT);

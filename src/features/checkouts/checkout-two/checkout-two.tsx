@@ -50,8 +50,7 @@ import Schedules from 'features/schedule/schedule';
 import Contact from 'features/contact/contact';
 import {gql, useMutation} from '@apollo/client'
 import {ADD_ORDER} from '../../../graphql/mutation/order'
-import {DELETE_CONTACT} from '../../../graphql/mutation/contact'
-import {DELETE_ADDRESS} from '../../../graphql/mutation/address'
+import {NEW_OR_EXIST_CUSTUMER} from '../../../graphql/mutation/custumer'
 import { PRODUCT_QUANTITY } from '../../../graphql/mutation/product';
 import Swal from 'sweetalert2'
 
@@ -113,6 +112,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
   const size = useWindowSize();
 
   const [addOrder]= useMutation(ADD_ORDER)
+  const [neworexistCustumer]= useMutation(NEW_OR_EXIST_CUSTUMER)
   const[updateProductQuantity]=useMutation( PRODUCT_QUANTITY)
   useEffect(() => {
     if (
@@ -152,7 +152,6 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
         let schedule= state.schedules.filter(ele=>ele.type==='primary')
         
         let custumerName= state.address.filter(ele=>ele.type==='primary')
-          console.log(address);
           
         const order = {
             custumerName: custumerName[0].name,
@@ -177,6 +176,14 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                   }
                 })
                 }
+        let to_number =  Number(((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress))
+        neworexistCustumer({
+          variables:{
+            id: state.id,
+            number:custumerName[0].name,
+            order: to_number
+          }
+        })
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -381,7 +388,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                       />
                     </Text>
                     {(entrega[0].title === 'Entega normal') ? 
-                    <Text>{CURRENCY}0.00</Text>:
+                    <Text>{CURRENCY}2500</Text>:
 
                     <Text>{CURRENCY}2000</Text>
                   }

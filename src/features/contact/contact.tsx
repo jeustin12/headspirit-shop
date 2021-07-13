@@ -55,7 +55,7 @@ const Contact = ({
       <CardHeader increment={increment}>
         <FormattedMessage
           id='contactNumberText'
-          defaultMessage='Select Your Contact Number'
+          defaultMessage='Número de telefonop'
         />
       </CardHeader>
       <ButtonGroup flexStart={flexStart}>
@@ -65,7 +65,7 @@ const Contact = ({
             <RadioCard
             id={item.id}
             key={item.id}
-            title={item.type}
+            title=''
             content={item.number}
             checked={item.type === 'primary'}
             onChange={() =>
