@@ -52,7 +52,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
   const getCartItemsTotalPrice = () =>{
     let product = cartItemsTotalPrice(state.items, state.coupon);
     let totalPrice = product + Number(2500)
-    return totalPrice
+    return totalPrice.toFixed(2)
   }
 
   const getDiscount = () => {
