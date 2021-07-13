@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import NavLink from 'components/nav-link/nav-link';
-import { OFFER_MENU_ITEM, HELP_MENU_ITEM } from 'site-settings/site-navigation';
+import { HELP_MENU_ITEM } from 'site-settings/site-navigation';
 import LanguageSwitcher from '../language-switcher/language-switcher';
 import { HelpIcon } from 'assets/icons/HelpIcon';
 import { RightMenuBox } from './right-menu.style';

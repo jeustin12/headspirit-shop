@@ -2,7 +2,7 @@ import React from 'react';
 import Router, { useRouter } from 'next/router';
 import styled from 'styled-components';
 import css from '@styled-system/css';
-import { CATEGORY_MENU_ITEMS } from 'site-settings/site-navigation';
+// import { CATEGORY_MENU_ITEMS } from 'site-settings/site-navigation';
 import * as categoryMenuIcons from 'assets/icons/category-menu-icons';
 import IconNavCard from './type-nav-card';
 
@@ -45,8 +45,8 @@ const CategoryIconNav = (props: any) => {
   };
 
   return (
-    <CategoryWrapper>
-      {CATEGORY_MENU_ITEMS.map((item) => (
+    <>
+      {/* {CATEGORY_MENU_ITEMS.map((item) => (
         <Col key={item.id}>
           <IconNavCard
             onClick={() => handleOnClick(item)}
@@ -59,8 +59,8 @@ const CategoryIconNav = (props: any) => {
             {...props}
           />
         </Col>
-      ))}
-    </CategoryWrapper>
+      ))} */}
+    </>
   );
 };
 export default CategoryIconNav;

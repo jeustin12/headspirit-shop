@@ -98,28 +98,7 @@ const MobileDrawer: React.FunctionComponent = () => {
       <DrawerBody>
         <Scrollbar className='drawer-scrollbar'>
           <DrawerContentWrapper>
-            <DrawerProfile>
-              {isAuthenticated ? (
-                <LoginView>
-                  <UserAvatar>
-                    <img src={UserImage} alt='user_avatar' />
-                  </UserAvatar>
-                  <UserDetails>
-                    <h3>David Kinderson</h3>
-                    <span>+990 374 987</span>
-                  </UserDetails>
-                </LoginView>
-              ) : (
-                <LogoutView>
-                  <Button variant='primary' onClick={signInOutForm}>
-                    <FormattedMessage
-                      id='mobileSignInButtonText'
-                      defaultMessage='join'
-                    />
-                  </Button>
-                </LogoutView>
-              )}
-            </DrawerProfile>
+            
 
             <DrawerMenu>
               {MOBILE_DRAWER_MENU.map((item) => (
