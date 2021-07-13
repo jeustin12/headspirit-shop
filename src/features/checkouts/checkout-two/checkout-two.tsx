@@ -201,8 +201,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
               position: 'center',
               icon: 'error',
               title: "Por favor asegurese de introducir o seleccionar ya sea la direccion o el número de telefono",
-              showConfirmButton: false,
-              // timer: 1500
+              showConfirmButton: true,
             })
           }
       }
