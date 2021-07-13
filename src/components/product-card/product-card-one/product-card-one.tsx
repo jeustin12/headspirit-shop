@@ -90,13 +90,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   );
   const { addItem, removeItem, getItem, isInCart } = useCart();
   const handleAddClick = (e) => {
-    if (data.quantity <= 13) {
     e.stopPropagation();
     addItem(data);
     if (!isInCart(data.id)) {
       cartAnimation(e);
     }
-  }
   };
   const handleRemoveClick = (e) => {
     e.stopPropagation();

@@ -105,7 +105,7 @@ export const Products: React.FC<ProductsProps> = ({
           />
         );
         };
-        return (
+return (
           <>
       <ProductsRow>
         {products.map((item: any, index: number) => (
