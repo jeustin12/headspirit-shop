@@ -43,16 +43,16 @@ export const Products: React.FC<ProductsProps> = ({
   type,
 }) => {
   const statesubcategory = useAppState('subcategoryname')
+  const statename = useAppState('searchTerm')
   const router = useRouter();
   const { data, error, loading, fetchMore, networkStatus } = useQuery(GET_PRODUCTS,
     {
       variables:{
-        subcategory:statesubcategory 
+        subcategory:statesubcategory, 
+        name:statename
       },
     }
     )
-  console.log(statesubcategory);
-  
   
   const loadingMore = networkStatus === NetworkStatus.fetchMore;
   

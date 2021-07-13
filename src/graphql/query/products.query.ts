@@ -18,8 +18,8 @@ import { gql } from '@apollo/client';
 // `;
 
 export const GET_PRODUCTS = gql`
-query getProducts($isActive: String!="active",$subcategory: String) {
-  product(isActive:$isActive,subcategory:$subcategory) {
+query getProducts($isActive: String!="active",$subcategory: String,$name:String) {
+  product(isActive:$isActive,subcategory:$subcategory,name:$name) {
     id
     name
     slug

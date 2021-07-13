@@ -24,24 +24,6 @@ const Search: React.FC<Props> = ({ onSubmit, ...props }) => {
   const { pathname, query } = router;
   const onSearch = (e) => {
     e.preventDefault();
-    const { type, ...rest } = query;
-    if (type) {
-      router.push(
-        {
-          pathname,
-          query: { ...rest, text: searchTerm },
-        },
-        {
-          pathname: `/${type}`,
-          query: { ...rest, text: searchTerm },
-        }
-      );
-    } else {
-      router.push({
-        pathname,
-        query: { ...rest, text: searchTerm },
-      });
-    }
     dispatch({ type: 'SET_SEARCH_TERM', payload: '' });
     if (onSubmit) {
       onSubmit();
