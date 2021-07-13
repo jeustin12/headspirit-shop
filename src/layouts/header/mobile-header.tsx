@@ -79,7 +79,7 @@ const MobileHeader: React.FC<MobileHeaderProps> = ({ className }) => {
           <Logo imageUrl={LogoImage} alt='shop logo' />
         </LogoWrapper>
 
-        <LanguageSwitcher />
+        {/* <LanguageSwitcher /> */}
 
         {isHomePage ? (
           <SearchWrapper

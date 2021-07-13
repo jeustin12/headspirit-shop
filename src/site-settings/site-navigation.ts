@@ -100,7 +100,7 @@ export const LANGUAGE_MENU = [
   
   {
     id: 'en',
-    defaultMessage: 'English',
+    defaultMessage: 'Spanish',
     icon: 'USFlag',
   },
   {

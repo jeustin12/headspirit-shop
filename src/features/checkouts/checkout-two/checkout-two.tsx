@@ -315,7 +315,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                 >
                   <FormattedMessage
                     id='processCheckout'
-                    defaultMessage='Proceed to Checkout'
+                    defaultMessage='Completar orden '
                   />
                 </Button>
               </CheckoutSubmit>

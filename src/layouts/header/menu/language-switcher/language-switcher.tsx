@@ -17,7 +17,7 @@ const LanguageMenu = ({ onClick }) => {
       {LANGUAGE_MENU.map((item) => (
         <MenuItem onClick={onClick} key={item.id} value={item.id}>
           <span>
-            <FlagIcon name={item.icon} />
+            <FlagIcon name="ESFlag" />
           </span>
           <FormattedMessage id={item.id} defaultMessage={item.defaultMessage} />
         </MenuItem>
