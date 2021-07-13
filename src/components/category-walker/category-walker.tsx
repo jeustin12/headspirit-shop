@@ -33,7 +33,7 @@ const CategoryWalker: React.FunctionComponent<WalkerProps> = ({
         {query.category ? (
           <Category>{startCase(query.category as string)}</Category>
         ) : (
-          <NoCategory>No Category Selected</NoCategory>
+          <NoCategory>Categoria no seleccionada</NoCategory>
         )}
         {/* <IconWrapper>
           <ArrowNext width="13px" />

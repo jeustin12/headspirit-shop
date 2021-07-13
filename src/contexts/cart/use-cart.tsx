@@ -49,7 +49,9 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     return state.items?.find((item) => item.id === id);
   };
   const getCartItemsPrice = () => cartItemsTotalPrice(state.items).toFixed(2);
-  const getCartItemsTotalPrice = () =>{
+  const getCartItemsTotalPrice = () =>
+    cartItemsTotalPrice(state.items, state.coupon).toFixed(2);
+  const getCartItemsTotalPricePlusShip = () =>{
     let product = cartItemsTotalPrice(state.items, state.coupon);
     let totalPrice = product + Number(2500)
     return totalPrice.toFixed(2)
@@ -90,6 +92,7 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     removeCouponHandler,
     getDiscount,
     toggleRestaurant,
+    getCartItemsTotalPricePlusShip
   };
 };
 
@@ -112,6 +115,7 @@ export const CartProvider = ({ children }) => {
     getCartItemsPrice,
     getDiscount,
     toggleRestaurant,
+    getCartItemsTotalPricePlusShip
   } = useCartActions();
   const { rehydrated, error } = useStorage(state, rehydrateLocalState);
 
@@ -138,6 +142,7 @@ export const CartProvider = ({ children }) => {
         removeCoupon: removeCouponHandler,
         calculateDiscount: getDiscount,
         toggleRestaurant,
+        getCartItemsTotalPricePlusShip:getCartItemsTotalPricePlusShip
       }}
     >
       {children}

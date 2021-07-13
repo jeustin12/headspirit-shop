@@ -105,6 +105,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
     calculateSubTotalPrice,
     isRestaurant,
     toggleRestaurant,
+    getCartItemsTotalPricePlusShip
   } = useCart();
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -159,7 +160,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
             contact:Num[0].number,
             Products: tostring,
             Status: "1 - Pendiente de pago",
-            Total_amount: ((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress),
+            Total_amount: ((entrega[0].title === 'Entega normal') ? getCartItemsTotalPricePlusShip():entregaExpress),
             delivery_address: address[0].info,
             custumerId: state.id,
             schedule:schedule[0].title
@@ -179,7 +180,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                     }
                   })
                   }
-          let to_number =  Number(((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress))
+          let to_number =  Number(((entrega[0].title === 'Entega normal') ? getCartItemsTotalPricePlusShip():entregaExpress))
           neworexistCustumer({
             variables:{
               id: state.id,
@@ -425,7 +426,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                     <Bold>
                       {(entrega[0].title === 'Entega normal')?
                       CURRENCY +
-                      calculatePrice()
+                      getCartItemsTotalPricePlusShip()
                       :
                       CURRENCY +
                       entregaExpress

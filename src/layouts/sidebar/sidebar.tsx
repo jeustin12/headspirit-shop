@@ -69,11 +69,11 @@ const SidebarCategory: React.FC<SidebarCategoryProps> = ({
               </RequestMedicine>
             </Link>
           )}
-          {/* <TreeMenu
+          <TreeMenu
             data={data.getAllCategories}
-            onClick={onCategoryClick}
+            onClick={onSubCategoryClick}
             active={selectedQueries}
-          /> */}
+          />
         </CategoryWalker>
       </PopoverWrapper>
 
