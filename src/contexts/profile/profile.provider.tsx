@@ -33,7 +33,7 @@ function reducer(state: any, action: Action): any {
       const newContact = {
         ...action.payload,
         id: uuidV4(),
-        type: state.contact.length === '0' ? 'primary' : 'secondary',
+        type: state.contact.length === 0 ? 'primary' : 'secondary',
       };
       return {
         ...state,
@@ -61,7 +61,7 @@ function reducer(state: any, action: Action): any {
       const newAdress = {
         ...action.payload,
         id: uuidV4(),
-        type: state.address.length === '0' ? 'primary' : 'secondary',
+        type: state.address.length === 0 ? 'primary' : 'secondary',
       };
       return {
         ...state,

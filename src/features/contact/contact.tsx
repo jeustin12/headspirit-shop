@@ -59,6 +59,8 @@ const Contact = ({
         />
       </CardHeader>
       <ButtonGroup flexStart={flexStart}>
+        {console.log(contact)
+        }
         <RadioGroup
           items={contact}
           component={(item: any) => (

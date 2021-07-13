@@ -131,7 +131,7 @@ const handleInfoChange = values=>{
 
 const addressValue = {
     id: values.id,
-    type: 'primary',
+    type: (state.address.length === 0 ? 'primary' : 'secondary'),
     name: values.name,
     info: province + ',' + canton + ',' + district + ', ' + values.info,
 };
@@ -147,9 +147,7 @@ const handleSubmits = async () => {
         } 
         },
     });
-    // console.log(state.id);
-    // console.log(values.id);
-    
+    console.log(state.id);
     dispatch({ type: 'ADD_OR_UPDATE_ADDRESS', payload: addressValue });
     closeModal();
     }

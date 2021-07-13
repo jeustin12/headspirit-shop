@@ -82,6 +82,7 @@ const Address = ({
   }
 
   }
+  
   return (
     <>
       <CardHeader increment={increment}>
@@ -91,6 +92,8 @@ const Address = ({
         />
       </CardHeader>
       <ButtonGroup flexStart={flexStart}>
+        {console.log(address)
+        }
         <RadioGroup
           items={address}
           component={(item: any) => (

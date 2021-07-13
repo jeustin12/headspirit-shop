@@ -27,26 +27,27 @@ number: Yup.string().required('Number is required'),
 });
 
 const CreateContact: React.FC<Props> = ({ item }) => {
-const initialValues = {
-    id: item.id || null,
-    type: 'primary',
-    number: item.number || '',
-};
-const [addContactMutation] = useMutation(CREATE_CONTACT);
-const { state, dispatch } = useContext(ProfileContext);
+    const [addContactMutation] = useMutation(CREATE_CONTACT);
+    const { state, dispatch } = useContext(ProfileContext);
+    const initialValues = {
+        id: item.id || null,
+        type: (state.contact.length === 0 ? 'primary' : 'secondary'),
+        number: item.number || '',
+    };
 const handleSubmit = async (values: FormValues, { setSubmitting }: any) => {
-    await addContactMutation({
-    variables: { 
-        input:{
-            type:values.type,
-            number: values.number,
-            custumerId: state.id
-        }
-    },
-    });
+    // await addContactMutation({
+    // variables: { 
+    //     input:{
+    //         type:values.type,
+    //         number: values.number,
+    //         custumerId: state.id
+    //     }
+    // },
+    // });
+    console.log(values);
     dispatch({ type: 'ADD_OR_UPDATE_CONTACT', payload: values });
     closeModal();
-    setSubmitting(false);
+    // setSubmitting(false);
 };
 return (
     <Formik

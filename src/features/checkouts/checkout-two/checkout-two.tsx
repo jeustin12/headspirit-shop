@@ -164,28 +164,30 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
             custumerId: state.id,
             schedule:schedule[0].title
           }
+          console.log(order);
+          
             
-            addOrder({
-                variables:{
-                    input: order
-                  }
-                })
-            for (let i = 0; i < ProductID.length; i++) {
-                updateProductQuantity({
-                variables:{
-                id:ProductID[i],
-                quantity:ProductQuantity[i]
-                    }
-                  })
-                  }
-          let to_number =  Number(((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress))
-          neworexistCustumer({
-            variables:{
-              id: state.id,
-              number:custumerName[0].name,
-              order: to_number
-            }
-          })
+          //   addOrder({
+          //       variables:{
+          //           input: order
+          //         }
+          //       })
+          //   for (let i = 0; i < ProductID.length; i++) {
+          //       updateProductQuantity({
+          //       variables:{
+          //       id:ProductID[i],
+          //       quantity:ProductQuantity[i]
+          //           }
+          //         })
+          //         }
+          // let to_number =  Number(((entrega[0].title === 'Entega normal') ? calculatePrice():entregaExpress))
+          // neworexistCustumer({
+          //   variables:{
+          //     id: state.id,
+          //     number:custumerName[0].name,
+          //     order: to_number
+          //   }
+          // })
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -194,8 +196,8 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
             timer: 1500
           })
   
-          clearCart();
-          Router.push('/');
+          // clearCart();
+          // Router.push('/');
           } catch (error) {
             Swal.fire({
               position: 'center',
