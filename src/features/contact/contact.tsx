@@ -39,12 +39,12 @@ const Contact = ({
   } = useContext(ProfileContext);
 
   const handleOnDelete = async (item) => {
-    dispatch({ type: 'DELETE_CONTACT', payload: item.id });
-    return await deleteContactMutation({
+    await deleteContactMutation({
       variables: {
         number:item.number
       },
     });
+    dispatch({ type: 'DELETE_CONTACT', payload: item.id });
   };
 
 
@@ -59,8 +59,6 @@ const Contact = ({
         />
       </CardHeader>
       <ButtonGroup flexStart={flexStart}>
-        {console.log(contact)
-        }
         <RadioGroup
           items={contact}
           component={(item: any) => (

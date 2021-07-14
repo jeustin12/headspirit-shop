@@ -4,13 +4,19 @@ import { themeGet } from '@styled-system/theme-get';
 import * as Yup from 'yup';
 import { closeModal } from '@redq/reuse-modal';
 import { FormikProps, ErrorMessage, Formik, Form } from 'formik';
-import { useMutation } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import MaskedInput from 'react-text-mask';
 import { ProfileContext } from 'contexts/profile/profile.context';
 import { Button } from 'components/button/button';
 import { UPDATE_CONTACT } from 'graphql/mutation/contact';
 import { FieldWrapper, Heading } from './contact-card.style';
 import { FormattedMessage } from 'react-intl';
+
+const UPDATE_CUSTUMER_CELLPHONE= gql`
+mutation UpdateCellphone($id:String!,$cellphone:String!){
+    UpdateCellphone(id:$id,cellphone:$cellphone)
+}
+`
 
 type Props = {
   item?: any | null;
@@ -32,9 +38,16 @@ const CreateOrUpdateContact: React.FC<Props> = ({ item }) => {
     type: item.type || 'secondary',
     number: item.number || '',
   };
+  const [addcellphone]=useMutation(UPDATE_CUSTUMER_CELLPHONE)
   const [addContactMutation] = useMutation(UPDATE_CONTACT);
   const { state, dispatch } = useContext(ProfileContext);
   const handleSubmit = async (values: FormValues, { setSubmitting }: any) => {
+    await addcellphone({
+      variables:{
+          id: state.id,
+          cellphone: values.number
+      }
+  })
     await addContactMutation({
       variables:{
         id: item.id,

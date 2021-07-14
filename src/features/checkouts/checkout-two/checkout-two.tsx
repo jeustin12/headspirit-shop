@@ -181,6 +181,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                   })
                   }
           let to_number =  Number(((entrega[0].title === 'Entega normal') ? getCartItemsTotalPricePlusShip():entregaExpress))
+          
           neworexistCustumer({
             variables:{
               id: state.id,
