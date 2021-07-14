@@ -64,8 +64,24 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
   }, [query.text, query.category]);
   const PAGE_TYPE: any = 'tienda';
   const page = sitePages[PAGE_TYPE];
-  if(loading) return <h1>Cargando...</h1>
-  console.log(data);
+  if(loading) return (
+    <div
+    style={{
+      width: "50px",
+      height: "50px",
+      /* Center vertically and horizontally */
+      position: "absolute",
+      top: "50%",
+      left: "25%",
+      margin: "-25px 0 0 -25px"
+    }}>
+      <h1
+      style={{
+        color:"#CBC0D3"
+      }}
+      >Cargando</h1>
+    </div>
+  )
   
   return (
     <>
