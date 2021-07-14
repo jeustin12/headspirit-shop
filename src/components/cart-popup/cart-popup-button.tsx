@@ -24,7 +24,7 @@ const CartPopupButton: React.FC<CartButtonProps> = ({
   itemCount,
   itemPostfix = 'items',
   price,
-  pricePrefix = '$',
+  pricePrefix = '₡',
   style,
   onClick,
   className,

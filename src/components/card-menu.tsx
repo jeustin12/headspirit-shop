@@ -12,7 +12,7 @@ const CardBox = styled.div<any>((props) =>
     padding: '1rem 10px',
     borderRadius: [10, 10, 6],
     cursor: 'pointer',
-    border: props.active ? '2px solid' : '2px solid',
+    border: props.active ? '3px solid' : '3px solid',
     borderColor: props.active ? '#212121' : ['gray.200', 'gray.200', '#fff'],
   })
 );

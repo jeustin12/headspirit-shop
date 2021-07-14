@@ -70,7 +70,7 @@ const Cart: React.FC<CartPropsType> = ({
         </PopupItemCount>
 
         <CloseButton onClick={onCloseBtnClick}>
-          <CloseIcon />
+          <h6>Seguir Comprando</h6>
         </CloseButton>
       </PopupHeader>
 

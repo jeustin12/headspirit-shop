@@ -61,7 +61,8 @@ const CloseButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 10;
+  margin: 10;
   border: 0;
   outline: 0;
   flex-shrink: 0;
@@ -76,11 +77,11 @@ const CloseButton = styled.button`
 
   @media (max-width: 767px) {
     position: absolute;
-    top: -45px;
+    top: -60px;
     background-color: ${themeGet('colors.white', '#ffffff')};
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+    width: 150px;
+    height: 50px;
+    border-radius: 48px;
     color: rgba(0, 0, 0, 0.5);
   }
 

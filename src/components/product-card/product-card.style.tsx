@@ -15,7 +15,7 @@ const StyledBox = styled.div(
 export const ProductCardWrapper = styled.div(
   css({
     height: '100%',
-    width: '100%',
+    width: '110%',
     backgroundColor: 'white',
     position: 'relative',
     fontFamily: 'inherit',
@@ -24,7 +24,7 @@ export const ProductCardWrapper = styled.div(
 
     '.card-counter': {
       '@media (max-width: 767px)': {
-        width: 30,
+        width: 35,
         height: 90,
         flexDirection: 'column-reverse',
         position: 'absolute',

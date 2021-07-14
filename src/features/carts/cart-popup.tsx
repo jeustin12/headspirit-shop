@@ -83,7 +83,7 @@ const CartPopUp: React.FC<CartProps> = ({
               )
             }
             price={calculatePrice()}
-            pricePrefix='$'
+            pricePrefix='₡'
             onClick={handleModal}
           />
         </>

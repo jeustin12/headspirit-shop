@@ -125,7 +125,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
     );
   };
   return (
-    <ProductCardWrapper onClick={handleQuickViewModal} className="product-card">
+    <ProductCardWrapper onClick={handleQuickViewModal} className="product-card"
+    style={{
+      border: "3px solid #f1f1f1"
+    }}
+    >
       <ProductImageWrapper>
         <Image
           url={image}
