@@ -185,7 +185,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
           neworexistCustumer({
             variables:{
               id: state.id,
-              number:custumerName[0].name,
+              number:Num[0].number,
               order: to_number
             }
           })
