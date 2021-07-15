@@ -64,7 +64,7 @@ export const ModalProvider = ({
       <React.Fragment>
         {children}
         {Object.keys(modals).map((currentKey) => {
-          console.log(currentKey, modals[currentKey]);
+          // console.log(currentKey, modals[currentKey]);
           const { component: Component, isOpen, onClose } = modals[currentKey];
           return isSmall ? (
             <SpringModal

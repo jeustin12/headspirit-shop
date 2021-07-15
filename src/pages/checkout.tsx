@@ -51,7 +51,24 @@ const CheckoutPage: NextPage<Props> = ({ deviceType }) => {
     newCustumer();
     SetCustumer(false)
   }
-  if (Me.loading) return <h1>cargando...</h1>
+  if(Me.loading) return (
+    <div
+    style={{
+      width: "50px",
+      height: "50px",
+      /* Center vertically and horizontally */
+      position: "absolute",
+      top: "50%",
+      left: "25%",
+      margin: "-25px 0 0 -25px"
+    }}>
+      <h1
+      style={{
+        color:"#CBC0D3"
+      }}
+      >Cargando</h1>
+    </div>
+  )
   // console.log(Me.data.me);
   if (Me.error) return <div>{Me.error.message}</div>;
   const token = 'true';

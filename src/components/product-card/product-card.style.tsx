@@ -24,7 +24,7 @@ export const ProductCardWrapper = styled.div(
 
     '.card-counter': {
       '@media (max-width: 767px)': {
-        width: 35,
+        width: 40,
         height: 90,
         flexDirection: 'column-reverse',
         position: 'absolute',
@@ -119,7 +119,6 @@ export const ProductInfo = styled.div`
   }
   .product-meta {
     margin-top: 30px;
-    display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
@@ -169,6 +168,7 @@ export const ProductInfo = styled.div`
       border: 2px solid ${themeGet('colors.gray.200', '#f7f7f7')};
       border-radius: ${themeGet('radii.big', '18px')};
       height: 36px;
+      margin-top: 30px;
       padding-left: 17px;
       padding-right: 17px;
       font-size: ${themeGet('fontSizes.sm', '13')}px;
