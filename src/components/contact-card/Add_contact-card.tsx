@@ -22,18 +22,13 @@ type?: string;
 number?: string;
 };
 
-const UPDATE_CUSTUMER_CELLPHONE= gql`
-mutation UpdateCellphone($id:String!,$cellphone:String!){
-    UpdateCellphone(id:$id,cellphone:$cellphone)
-}
-`
+
 
 const ContactValidationSchema = Yup.object().shape({
 number: Yup.string().required('Number is required'),
 });
 
 const CreateContact: React.FC<Props> = ({ item }) => {
-    const [addcellphone]=useMutation(UPDATE_CUSTUMER_CELLPHONE)
     const [addContactMutation] = useMutation(CREATE_CONTACT);
     const { state, dispatch } = useContext(ProfileContext);
     const initialValues = {
@@ -42,13 +37,6 @@ const CreateContact: React.FC<Props> = ({ item }) => {
         number: item.number || '',
     };
 const handleSubmit = async (values: FormValues, { setSubmitting }: any) => {
-    // add celphone mutation
-    await addcellphone({
-        variables:{
-            id: state.id,
-            cellphone: values.number
-        }
-    })
     await addContactMutation({
     variables: { 
         input:{

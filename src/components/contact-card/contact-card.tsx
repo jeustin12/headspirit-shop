@@ -12,11 +12,7 @@ import { UPDATE_CONTACT } from 'graphql/mutation/contact';
 import { FieldWrapper, Heading } from './contact-card.style';
 import { FormattedMessage } from 'react-intl';
 
-const UPDATE_CUSTUMER_CELLPHONE= gql`
-mutation UpdateCellphone($id:String!,$cellphone:String!){
-    UpdateCellphone(id:$id,cellphone:$cellphone)
-}
-`
+
 
 type Props = {
   item?: any | null;
@@ -38,16 +34,10 @@ const CreateOrUpdateContact: React.FC<Props> = ({ item }) => {
     type: item.type || 'secondary',
     number: item.number || '',
   };
-  const [addcellphone]=useMutation(UPDATE_CUSTUMER_CELLPHONE)
   const [addContactMutation] = useMutation(UPDATE_CONTACT);
   const { state, dispatch } = useContext(ProfileContext);
   const handleSubmit = async (values: FormValues, { setSubmitting }: any) => {
-    await addcellphone({
-      variables:{
-          id: state.id,
-          cellphone: values.number
-      }
-  })
+
     await addContactMutation({
       variables:{
         id: item.id,
@@ -80,7 +70,7 @@ const CreateOrUpdateContact: React.FC<Props> = ({ item }) => {
           </Heading>
           <FieldWrapper>
             <MaskedInput
-              mask={['(','+','5', '0','6', ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+              mask={['(','+','5', '0','6', ')', ' ', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
               className="form-control"
               placeholder="Ingrese un numero de telefono"
               showMask

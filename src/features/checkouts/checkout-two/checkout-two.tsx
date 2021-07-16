@@ -131,7 +131,6 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
         }
       };
     }, []);
-    console.log(state.id);
     
     let entrega = (state.schedules.filter(ele=>ele.type==='primary'))
     let entregaExpress = getExpressPrice()
@@ -193,6 +192,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
           })
           // console.log(state.id);
           // console.log(custumerName[0].name);
+          // console.log(Num[0].number);
           // console.log(to_number);
           
           
