@@ -10,7 +10,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 function createIsomorphLink() {
   return new HttpLink({
-    uri: 'https://cryptic-inlet-95343.herokuapp.com/graphql',
+    uri: 'https://protected-inlet-34357.herokuapp.com/graphql',
     credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
   });
 }

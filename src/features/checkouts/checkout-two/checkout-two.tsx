@@ -131,6 +131,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
         }
       };
     }, []);
+    console.log(state.id);
     
     let entrega = (state.schedules.filter(ele=>ele.type==='primary'))
     let entregaExpress = getExpressPrice()
@@ -185,10 +186,17 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
           neworexistCustumer({
             variables:{
               id: state.id,
+              name:custumerName[0].name,
               number:Num[0].number,
               order: to_number
             }
           })
+          // console.log(state.id);
+          // console.log(custumerName[0].name);
+          // console.log(to_number);
+          
+          
+          
           Swal.fire({
             position: 'center',
             icon: 'success',
