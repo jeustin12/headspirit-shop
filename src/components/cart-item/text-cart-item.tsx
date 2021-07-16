@@ -43,7 +43,7 @@ export const TextCartItem: React.FC<Props> = ({
       </Information>
       <Total>
         {CURRENCY}
-        {(quantity * displayPrice).toFixed(2)}
+        {(quantity * displayPrice).toLocaleString('en-US')}
       </Total>
       <RemoveButton onClick={onRemove}>
         <CloseIcon />

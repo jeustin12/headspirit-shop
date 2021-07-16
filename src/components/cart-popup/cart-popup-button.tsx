@@ -39,7 +39,7 @@ const CartPopupButton: React.FC<CartButtonProps> = ({
     <PriceBox>
       {pricePrefix}
       {/* {price} */}
-      {parseFloat(`${price}`).toFixed(2)}
+      {price.toLocaleString('en-US')}
     </PriceBox>
   </CartPopupButtonStyled>
 );
@@ -48,7 +48,7 @@ export const BoxedCartButton: React.FC<CartButtonProps> = ({
   itemCount,
   itemPostfix = 'items',
   price,
-  pricePrefix = '$',
+  pricePrefix = '₡',
   style,
   onClick,
   className,
@@ -60,7 +60,7 @@ export const BoxedCartButton: React.FC<CartButtonProps> = ({
     </TotalItems>
     <PriceBoxAlt>
       {pricePrefix}
-      {parseFloat(`${price}`).toFixed(2)}
+      {price.toLocaleString('en-US')}
     </PriceBoxAlt>
   </CartPopupBoxButton>
 );

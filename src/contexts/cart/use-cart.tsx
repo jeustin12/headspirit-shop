@@ -48,13 +48,13 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
   const getItemHandler = (id) => {
     return state.items?.find((item) => item.id === id);
   };
-  const getCartItemsPrice = () => cartItemsTotalPrice(state.items).toFixed(2);
+  const getCartItemsPrice = () => cartItemsTotalPrice(state.items).toLocaleString('en-US');
   const getCartItemsTotalPrice = () =>
-    cartItemsTotalPrice(state.items, state.coupon).toFixed(2);
+    cartItemsTotalPrice(state.items, state.coupon).toLocaleString('en-US');
   const getCartItemsTotalPricePlusShip = () =>{
     let product = cartItemsTotalPrice(state.items, state.coupon);
     let totalPrice = product + Number(2500)
-    return totalPrice.toFixed(2)
+    return totalPrice.toLocaleString('en-US')
   }
 
   const getDiscount = () => {
@@ -62,13 +62,13 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     const discount = state.coupon
       ? (total * Number(state.coupon?.discountInPercent)) / 100
       : 0;
-    return discount.toFixed(2);
+    return discount.toLocaleString('en-US')
   };
 
   const getExpressPrice = () => {
     const total = cartItemsTotalPrice(state.items);
     const discount = total + Number(4500)
-    return discount.toFixed(2);
+    return discount.toLocaleString('en-US')
   };
   const getItemsCount = state.items?.reduce(
     (acc, item) => acc + item.quantity,

@@ -149,13 +149,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
             {discountInPercent ? (
               <span className="discountedPrice">
                 {currency}
-                {price}
+                {price.toLocaleString('en-US')}
               </span>
             ) : null}
 
             <span className="product-price">
               {currency}
-              {salePrice ? salePrice : price}
+              {salePrice ? salePrice.toLocaleString('en-US') : price.toLocaleString('en-US')}
             </span>
           </div>
 

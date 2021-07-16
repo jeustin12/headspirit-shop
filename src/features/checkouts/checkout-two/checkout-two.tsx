@@ -82,7 +82,7 @@ const OrderItem: React.FC<CartItemProps> = ({ product }) => {
       </ItemInfo>
       <Price>
         {CURRENCY}
-        {(displayPrice * quantity).toFixed(2)}
+        {(displayPrice * quantity).toLocaleString('en-US')}
       </Price>
     </Items>
   );
@@ -396,8 +396,8 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                       />
                     </Text>
                     <Text>
-                      {CURRENCY}
-                      {calculateSubTotalPrice()}
+                      {(CURRENCY)}
+                      {calculateSubTotalPrice().toLocaleString('en-US')}
                     </Text>
                   </TextWrapper>
 
@@ -409,9 +409,9 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                       />
                     </Text>
                     {(entrega[0].title === 'Entega normal') ? 
-                    <Text>{CURRENCY}2500</Text>:
+                    <Text>{CURRENCY}2,500</Text>:
 
-                    <Text>{CURRENCY}4500</Text>
+                    <Text>{CURRENCY}4,500</Text>
                   }
                   </TextWrapper>
 
@@ -424,7 +424,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                     </Text>
                     <Text>
                       {CURRENCY}
-                      {calculateDiscount()}
+                      {calculateDiscount().toLocaleString('en-US')}
                     </Text>
                   </TextWrapper>
 
@@ -434,11 +434,11 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                     </Bold>
                     <Bold>
                       {(entrega[0].title === 'Entega normal')?
-                      CURRENCY +
-                      getCartItemsTotalPricePlusShip()
+                      CURRENCY+
+                      getCartItemsTotalPricePlusShip().toLocaleString('en-US')
                       :
                       CURRENCY +
-                      entregaExpress
+                      entregaExpress.toLocaleString('en-US')
                     }
                     </Bold>
                   </TextWrapper>

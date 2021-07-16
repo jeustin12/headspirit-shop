@@ -41,7 +41,7 @@ export const CartItem: React.FC<Props> = ({
         <Name>{title}</Name>
         <Price>
           {CURRENCY}
-          {displayPrice}
+          {displayPrice.toLocaleString('en-US')}
         </Price>
         <Weight>
           {quantity} X {unit}
@@ -49,7 +49,7 @@ export const CartItem: React.FC<Props> = ({
       </Information>
       <Total>
         {CURRENCY}
-        {(quantity * displayPrice).toFixed(2)}
+        {(quantity * displayPrice).toLocaleString('en-US')}
       </Total>
       <RemoveButton onClick={onRemove}>
         <CloseIcon />

@@ -82,7 +82,6 @@ const CategoryPage: React.FC<any> = ({ deviceType }) => {
       >Cargando</h1>
     </div>
   )
-  
   return (
     <>
       <SEO title={page?.page_title} description={page?.page_description} />
