@@ -111,15 +111,17 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
   const [isValid, setIsValid] = useState(false);
   const { address, contact, card, schedules} = state;
   const size = useWindowSize();
+console.log(calculatePrice());
 
   const [addOrder]= useMutation(ADD_ORDER)
   const [neworexistCustumer]= useMutation(NEW_OR_EXIST_CUSTUMER)
   const[updateProductQuantity]=useMutation( PRODUCT_QUANTITY)
   useEffect(() => {
     if (
-      calculatePrice() > 0 &&
-      cartItemsCount > 0 
+      calculatePrice().length > 2
       ) {
+console.log(calculatePrice());
+        
         setIsValid(true);
       }
     }, [state]);

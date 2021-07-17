@@ -128,6 +128,7 @@ const handleInfoChange = values=>{
     console.log(values)
     // SetInfo(values)
 }
+// console.log(districtsOptions);
 
 const addressValue = {
     id: values.id,
