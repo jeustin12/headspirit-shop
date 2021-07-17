@@ -51,10 +51,17 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
   const getCartItemsPrice = () => cartItemsTotalPrice(state.items).toLocaleString('en-US');
   const getCartItemsTotalPrice = () =>
     cartItemsTotalPrice(state.items, state.coupon).toLocaleString('en-US');
+    const getCartItemsTotalPriceInt = () =>
+    cartItemsTotalPrice(state.items, state.coupon).toFixed(2);
   const getCartItemsTotalPricePlusShip = () =>{
     let product = cartItemsTotalPrice(state.items, state.coupon);
     let totalPrice = product + Number(2500)
     return totalPrice.toLocaleString('en-US')
+  }
+  const getCartItemsTotalPricePlusShipInt = () =>{
+    let product = cartItemsTotalPrice(state.items, state.coupon);
+    let totalPrice = product + Number(2500)
+    return totalPrice.toFixed(2)
   }
 
   const getDiscount = () => {
@@ -86,12 +93,14 @@ const useCartActions = (initialCart = INITIAL_STATE) => {
     getItemHandler,
     toggleCartHandler,
     getCartItemsTotalPrice,
+    getCartItemsTotalPriceInt,
     getExpressPrice,
     getCartItemsPrice,
     couponHandler,
     removeCouponHandler,
     getDiscount,
     toggleRestaurant,
+    getCartItemsTotalPricePlusShipInt,
     getCartItemsTotalPricePlusShip
   };
 };
@@ -109,13 +118,15 @@ export const CartProvider = ({ children }) => {
     getItemHandler,
     toggleCartHandler,
     getCartItemsTotalPrice,
+    getCartItemsTotalPriceInt,
     couponHandler,
     getExpressPrice,
     removeCouponHandler,
     getCartItemsPrice,
     getDiscount,
     toggleRestaurant,
-    getCartItemsTotalPricePlusShip
+    getCartItemsTotalPricePlusShip,
+    getCartItemsTotalPricePlusShipInt
   } = useCartActions();
   const { rehydrated, error } = useStorage(state, rehydrateLocalState);
 
@@ -135,8 +146,10 @@ export const CartProvider = ({ children }) => {
         isInCart: isInCartHandler,
         getExpressPrice: getExpressPrice,
         getItem: getItemHandler,
+        getCartItemsTotalPricePlusShipInt:getCartItemsTotalPricePlusShipInt,
         toggleCart: toggleCartHandler,
         calculatePrice: getCartItemsTotalPrice,
+        getCartItemsTotalPriceInt:getCartItemsTotalPriceInt,
         calculateSubTotalPrice: getCartItemsPrice,
         applyCoupon: couponHandler,
         removeCoupon: removeCouponHandler,

@@ -104,8 +104,10 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
     calculateDiscount,
     calculateSubTotalPrice,
     isRestaurant,
+    getCartItemsTotalPriceInt,
     toggleRestaurant,
-    getCartItemsTotalPricePlusShip
+    getCartItemsTotalPricePlusShip,
+    getCartItemsTotalPricePlusShipInt
   } = useCart();
   const [loading, setLoading] = useState(false);
   const [isValid, setIsValid] = useState(false);
@@ -120,8 +122,6 @@ console.log(calculatePrice());
     if (
       calculatePrice().length > 2
       ) {
-console.log(calculatePrice());
-        
         setIsValid(true);
       }
     }, [state]);
@@ -182,7 +182,7 @@ console.log(calculatePrice());
                     }
                   })
                   }
-          let to_number =  Number(((entrega[0].title === 'Entega normal') ? getCartItemsTotalPricePlusShip():entregaExpress))
+          let to_number =  Number(((entrega[0].title === 'Entega normal') ? getCartItemsTotalPriceInt():getCartItemsTotalPricePlusShipInt()))
           
           neworexistCustumer({
             variables:{
