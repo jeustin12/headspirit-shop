@@ -18,6 +18,7 @@ import { FormattedMessage } from 'react-intl';
 import { Button } from 'components/button/loadmore-button';
 import { GET_PRODUCTS } from 'graphql/query/products.query';
 import { useAppState } from 'contexts/app/app.provider';
+import { useCart } from 'contexts/cart/use-cart';
 
 const ErrorMessage = dynamic(() =>
   import('components/error-message/error-message')
@@ -42,6 +43,8 @@ export const Products: React.FC<ProductsProps> = ({
   loadMore = true,
   type,
 }) => {
+  const {items} = useCart();
+  
   const statesubcategory = useAppState('subcategoryname')
   const statename = useAppState('searchTerm')
   const router = useRouter();
@@ -102,6 +105,7 @@ export const Products: React.FC<ProductsProps> = ({
             data={props}
             deviceType={deviceType}
             quantity={props.quantity}
+            items={items}
           />
         );
         };

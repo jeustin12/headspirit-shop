@@ -133,6 +133,7 @@ export const CartProvider = ({ children }) => {
   return (
     <CartContext.Provider
       value={{
+        state:state,
         isOpen: state.isOpen,
         items: state.items,
         coupon: state.coupon,

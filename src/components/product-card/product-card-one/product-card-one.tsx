@@ -1,6 +1,6 @@
 // product card for general
 import dynamic from 'next/dynamic';
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from 'components/image/image';
 import { Button } from 'components/button/button';
 import {
@@ -17,6 +17,8 @@ import { FormattedMessage } from 'react-intl';
 import { CartIcon } from 'assets/icons/CartIcon';
 import { useModal } from 'contexts/modal/use-modal';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
+
 const QuickViewMobile = dynamic(
   () => import('features/quick-view/quick-view-mobile')
 );
@@ -39,7 +41,8 @@ type ProductCardProps = {
   updateCart?: any;
   value?: any;
   deviceType?: any;
-  quantity?:any
+  quantity?:any;
+  items?:any;
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -60,6 +63,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   data,
   deviceType,
   quantity,
+  items,
   ...props
 }) => {
   const router = useRouter();
@@ -88,13 +92,31 @@ const ProductCard: React.FC<ProductCardProps> = ({
       },
     }
   );
-  const { addItem, removeItem, getItem, isInCart } = useCart();
+  let item = items.filter(ele=>ele.name===title)
+  
+  const { addItem, removeItem, getItem, isInCart} = useCart();
   const handleAddClick = (e) => {
     e.stopPropagation();
+    try {
+      if (item[0].quantity + 1 > quantity) {
+        return Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: "La cantidad de productos deseados supera el inventario disponible",
+        showConfirmButton: true,
+      })
+    }
     addItem(data);
     if (!isInCart(data.id)) {
       cartAnimation(e);
     }
+    } catch (error) {
+      addItem(data);
+      if (!isInCart(data.id)) {
+      cartAnimation(e);
+    }
+    }
+    
   };
   const handleRemoveClick = (e) => {
     e.stopPropagation();
