@@ -5,8 +5,8 @@ export const siteMetadata = {
     summary: ``,
   },
   description: ``,
-  siteUrl: ``,
+  siteUrl: `headspirit.store`,
   social: {
-    twitter: ``,
+    instagram: `https://www.instagram.com/head_spirit_/?hl=es`,
   },
 };

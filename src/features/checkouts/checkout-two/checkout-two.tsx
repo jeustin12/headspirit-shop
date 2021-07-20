@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Router from 'next/router';
 import Link from 'next/link';
-import { Button } from 'components/button/button';
+import { Button as Button2 } from 'components/button/button';
 import { CURRENCY } from 'utils/constant';
 import { Scrollbar } from 'components/scrollbar/scrollbar';
 import CheckoutWrapper, {
@@ -133,7 +133,19 @@ console.log(calculatePrice());
         }
       };
     }, []);
-    
+    const TermandConditions=()=>{
+
+      Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title:"Nuestros Terminos y condiciones son los siguientes:",
+        html:
+          'Termino 1<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quam fugit eum perferendis eaque, incidunt nulla sed voluptate aliquam optio officiis expedita enim distinctio, nemo necessitatibus! Facere incidunt debitis culpa<br>' +
+          'Termino 2<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quam fugit eum perferendis eaque, incidunt nulla sed voluptate aliquam optio officiis expedita enim distinctio, nemo necessitatibus! Facere incidunt debitis culpa<br>' +
+          'Termino 3<br>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam quam fugit eum perferendis eaque, incidunt nulla sed voluptate aliquam optio officiis expedita enim distinctio, nemo necessitatibus! Facere incidunt debitis culpa<br>',
+        showConfirmButton: true,
+      })
+    }
     let entrega = (state.schedules.filter(ele=>ele.type==='primary'))
     let entregaExpress = getExpressPrice()
     const handleSubmit = async () => {
@@ -323,19 +335,31 @@ console.log(calculatePrice());
                   id='termAndConditionHelper'
                   defaultMessage='By making this purchase you agree to our'
                 />
-                <Link href='#'>
+                <button style={{
+                  backgroundColor: "Transparent",
+                  backgroundRepeat:"no-repeat",
+                  border: "none",
+                  cursor:"pointer",
+                  overflow: "hidden",
+                  outline:"none",
+                }} 
+                onClick={
+                  (e) => {
+                    e.preventDefault();
+                  TermandConditions()}}
+                >
                   <TermConditionLink>
                     <FormattedMessage
                       id='termAndCondition'
                       defaultMessage='terms and conditions.'
                     />
                   </TermConditionLink>
-                </Link>
+                </button>
               </TermConditionText>
 
               {/* CheckoutSubmit */}
               <CheckoutSubmit>
-                <Button
+                <Button2
                   type='button'
                   onClick={handleSubmit}
                   disabled={!isValid}
@@ -347,7 +371,7 @@ console.log(calculatePrice());
                     id='processCheckout'
                     defaultMessage='Completar orden '
                   />
-                </Button>
+                </Button2>
               </CheckoutSubmit>
             </InformationBox>
           </CheckoutInformation>

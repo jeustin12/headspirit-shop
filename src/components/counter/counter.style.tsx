@@ -6,6 +6,7 @@ export const CounterBox = styled.div<any>(
     display: 'flex',
     backgroundColor: 'primary.regular',
     color: 'white',
+    margin:"25px",
     fontSize: 'base',
     fontWeight: 'bold',
   }),
