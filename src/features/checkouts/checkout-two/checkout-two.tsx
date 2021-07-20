@@ -48,11 +48,14 @@ import Coupon from 'features/coupon/coupon';
 import Address from 'features/address/address';
 import Schedules from 'features/schedule/schedule';
 import Contact from 'features/contact/contact';
-import {gql, useMutation} from '@apollo/client'
+import {gql, useMutation, useQuery} from '@apollo/client'
 import {ADD_ORDER} from '../../../graphql/mutation/order'
 import {NEW_OR_EXIST_CUSTUMER} from '../../../graphql/mutation/custumer'
 import { PRODUCT_QUANTITY } from '../../../graphql/mutation/product';
+import { PRODUCT_INVENTORY } from '../../../graphql/mutation/product';
+
 import Swal from 'sweetalert2'
+import { NoUndefinedVariablesRule } from 'graphql';
 
 const CUSTUMER_ORDERS = gql`
 mutation custumerOrders($id: String!) {
@@ -113,11 +116,18 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
   const [isValid, setIsValid] = useState(false);
   const { address, contact, card, schedules} = state;
   const size = useWindowSize();
-console.log(calculatePrice());
 
   const [addOrder]= useMutation(ADD_ORDER)
   const [neworexistCustumer]= useMutation(NEW_OR_EXIST_CUSTUMER)
   const[updateProductQuantity]=useMutation( PRODUCT_QUANTITY)
+  
+  const{error,data,refetch}=useQuery(PRODUCT_INVENTORY,{
+    pollInterval:100,
+    variables:{
+        id:"1",
+        quantity:10000000}
+      })
+  
   useEffect(() => {
     if (
       calculatePrice().length > 2
@@ -151,8 +161,6 @@ console.log(calculatePrice());
     const handleSubmit = async () => {
       setLoading(true);
       if (isValid) {
-        try {
-        
         let Num = state.contact.filter(ele=>ele.type==='primary')
         let product= items.map((item) => (
             `${item.name} x${item.quantity}`
@@ -168,67 +176,91 @@ console.log(calculatePrice());
         let schedule= state.schedules.filter(ele=>ele.type==='primary')
         
         let custumerName= state.address.filter(ele=>ele.type==='primary')
-          
-        const order = {
-            custumerName: custumerName[0].name,
-            contact:Num[0].number,
-            Products: tostring,
-            Status: "1 - Pendiente de pago",
-            Total_amount: ((entrega[0].title === 'Entega normal') ? getCartItemsTotalPricePlusShip():entregaExpress),
-            delivery_address: address[0].info,
-            custumerId: state.id,
-            schedule:schedule[0].title
-          }
-          
-            
-            addOrder({
-                variables:{
-                    input: order
-                  }
-                })
-            for (let i = 0; i < ProductID.length; i++) {
-                updateProductQuantity({
-                variables:{
-                id:ProductID[i],
-                quantity:ProductQuantity[i]
+        try {
+          for (let i = 0; i < ProductID.length; i++) {
+            refetch({
+            id:ProductID[i],
+            quantity:ProductID[i]
+          })
+            }
+            if (error) {
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: error,
+                showConfirmButton: true,
+              }) 
+            } else{
+              console.log('proceder');
+              
+              const order = {
+              custumerName: custumerName[0].name,
+              contact:Num[0].number,
+              Products: tostring,
+              Status: "1 - Pendiente de pago",
+              Total_amount: ((entrega[0].title === 'Entega normal') ? getCartItemsTotalPricePlusShip():entregaExpress),
+              delivery_address: address[0].info,
+              custumerId: state.id,
+              schedule:schedule[0].title
+            }
+
+
+              addOrder({
+                  variables:{
+                      input: order
                     }
                   })
-                  }
-          let to_number =  Number(((entrega[0].title === 'Entega normal') ? getCartItemsTotalPriceInt():getCartItemsTotalPricePlusShipInt()))
-          
-          neworexistCustumer({
-            variables:{
-              id: state.id,
-              name:custumerName[0].name,
-              number:Num[0].number,
-              order: to_number
-            }
-          })
-          // console.log(state.id);
-          // console.log(custumerName[0].name);
-          // console.log(Num[0].number);
-          // console.log(to_number);
-          
-          
-          
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Tu orden a sido confirmada',
-            showConfirmButton: false,
-            timer: 1500
-          })
-  
-          clearCart();
-          Router.push('/');
-          } catch (error) {
+              for (let i = 0; i < ProductID.length; i++) {
+                  updateProductQuantity({
+                  variables:{
+                  id:ProductID[i],
+                  quantity:ProductQuantity[i]
+                      }
+                    })
+                    }
+            let to_number =  Number(((entrega[0].title === 'Entega normal') ? getCartItemsTotalPriceInt():getCartItemsTotalPricePlusShipInt()))
+                  
+            neworexistCustumer({
+              variables:{
+                id: state.id,
+                name:custumerName[0].name,
+                number:Num[0].number,
+                order: to_number
+              }
+            })
+            // console.log(state.id);
+            // console.log(custumerName[0].name);
+            // console.log(Num[0].number);
+            // console.log(to_number);
+
+
+
             Swal.fire({
               position: 'center',
-              icon: 'error',
-              title: "Por favor asegurese de introducir o seleccionar ya sea la direccion o el número de telefono",
-              showConfirmButton: true,
+              icon: 'success',
+              title: 'Tu orden a sido confirmada',
+              showConfirmButton: false,
+              timer: 1500
             })
-          }
+          
+            clearCart();
+            Router.push('/');
+
+              }
+
+        } catch (err) {
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: "Por favor asegurese de introducir o seleccionar ya sea la direccion o el número de telefono",
+            showConfirmButton: true,
+          })
+        }
+   
+        
+          
+        
+          
       }
       setLoading(false);
     };
